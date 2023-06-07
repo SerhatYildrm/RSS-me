@@ -19,6 +19,9 @@ rss_source = [
     {"name" : "Teknopat", "link" : "https://www.technopat.net/feed/"},
     {"name" : "Darkreader", "link" : "https://www.darkreading.com/rss.xml"},
     {"name" : "Hacker news", "link" : "https://news.ycombinator.com/rss"},
+    {"name" : "Python", "link" : "https://blog.python.org/feeds/posts/default?alt=rss"},
+    {"name" : "Real Python", "link": "https://realpython.com/atom.xml"},
+
 ]
 
 
@@ -30,8 +33,6 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-
-
 
 @st.cache_data
 def get_data():

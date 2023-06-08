@@ -38,7 +38,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-@st.cache_data
+@st.cache_data(max_entries=10)
 def get_data():
     _db = {}
     for rss in rss_source:

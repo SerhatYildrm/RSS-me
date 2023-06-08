@@ -23,9 +23,9 @@ class RSSource:
 
     def delete_rss(self,name: str):
         load_data = self.load()
-        for data in load_data:
-            if data["name"] == name:
-                del data
+        for index in range(len(load_data)):
+            if load_data[index]["name"] == name:
+                del load_data[index]
         self.dump(load_data)
 
 

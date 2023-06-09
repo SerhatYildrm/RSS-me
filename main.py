@@ -2,28 +2,12 @@
 import streamlit as st
 import feedparser
 from datetime import datetime, timezone
-from streamlit_modal import Modal
 import source
 
 #database = {}
 
 # TODAY
 today = datetime.today().strftime("%d.%m.%y")
-
-# rss_source = [
-#     {"name" : "Mert Sarıca", "link" : "https://www.mertsarica.com/feed/"},
-#     {"name" : "kienmanowar", "link" : "https://kienmanowar.wordpress.com/feed/"},
-#     {"name" : "Der Flounder", "link" : "https://derflounder.wordpress.com/feed/"},
-#     {"name" : "Misaki's Blog", "link" : "https://misakikata.github.io/atom.xml"},
-#     {"name" : "Bleeping Computer", "link" : "https://www.bleepingcomputer.com/feed/"},
-#     {"name" : "Teknopat", "link" : "https://www.technopat.net/feed/"},
-#     {"name" : "Darkreader", "link" : "https://www.darkreading.com/rss.xml"},
-#     {"name" : "Hacker news", "link" : "https://news.ycombinator.com/rss"},
-#     {"name" : "Python", "link" : "https://blog.python.org/feeds/posts/default?alt=rss"},
-#     {"name" : "Real Python", "link": "https://realpython.com/atom.xml"},
-# ]
-
-
 
 _db = source.RSSource()
 

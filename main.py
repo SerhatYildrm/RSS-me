@@ -2,7 +2,6 @@
 import streamlit as st
 import feedparser
 from datetime import datetime, timezone
-from streamlit_modal import Modal
 import source
 
 

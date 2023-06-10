@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 import source
 
 
+st.balloons()
+
 # TODAY
 today = datetime.today().strftime("%d.%m.%y")
 
@@ -69,12 +71,16 @@ else:
 
         for key in database.keys():
             for entry in database.get(key).entries:
-                if search_in_rss.lower() in entry.summary_detail.value.lower():
-                    if(entry.has_key("published_parsed")):
-                        entry_time = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).strftime("%d.%m.%y")
-                    else:
-                        entry_time = datetime(*entry.updated_parsed[:6], tzinfo=timezone.utc).strftime("%d.%m.%y")
-                    st.write(f"<span style='color: red;'>[{entry_time}]</span>  site: {key} - {entry.title} - <a  href='{entry.link}' target='_blank'>oku</a>", unsafe_allow_html= True)
+                if entry.has_key("summary_detail"):
+                    if search_in_rss.lower() in entry.summary_detail.value.lower():
+                        if(entry.has_key("published_parsed")):
+                            entry_time = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).strftime("%d.%m.%y")
+                        else:
+                            entry_time = datetime(*entry.updated_parsed[:6], tzinfo=timezone.utc).strftime("%d.%m.%y")
+                        st.write(f"<span style='color: red;'>[{entry_time}]</span>  site: {key} - {entry.title} - <a  href='{entry.link}' target='_blank'>oku</a>", unsafe_allow_html= True)
+                else:
+                    st.write("Birşey bulunamadı ... :eyes:")
+                    break
     else:
         col1, col2 = st.columns(2)
 

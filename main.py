@@ -95,6 +95,8 @@ else:
             delete = st.button("Sil")
             if delete:
                 _db.delete_rss(selected_rss)
+                st.cache_data.clear()
+                st.experimental_rerun()
 
         st.write("<hr />",unsafe_allow_html=True)
         for entry in used_rss.entries:

@@ -4,6 +4,8 @@ import feedparser
 from datetime import datetime, timezone
 import source
 
+import schedule
+
 
 st.balloons()
 
@@ -30,11 +32,13 @@ def get_data():
     return _db
 
 
+schedule.every(1).minutes.do(get_data)
+
 with st.spinner(text="Rss kaynakları sorgulanıyor..."):
     database = get_data()
 
 with st.sidebar:
-    st.write(f"<h1>RSS Me</h1>",unsafe_allow_html=True)
+    st.write(f":bird: <h1> RSS Me</h1>",unsafe_allow_html=True)
     st.write("<hr />", unsafe_allow_html= True)
     selected_rss = st.selectbox(" Rss Kaynağı Seç :  ", database.keys())
     st.write("<hr />", unsafe_allow_html= True)
@@ -50,6 +54,7 @@ used_rss = database.get(selected_rss)
 
 if create_rss:
     _db.add_rss(new_rss, new_rss_url)
+    st.cache_data.clear()
     st.experimental_rerun()
 
 if today_publish:
